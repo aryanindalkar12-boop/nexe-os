@@ -50,7 +50,7 @@ const IntegrationCard = ({
             alt=""
             width={isCenter ? 32 : 20}
             height={isCenter ? 32 : 20}
-            className="size-5 sm:size-10 grayscale group-hover:grayscale-0 hover:scale-110 transition-all duration-300"
+            className="size-5 sm:size-10 group-hover:scale-110 hover:scale-110 transition-all duration-300"
           />
         </div>
       ) : (

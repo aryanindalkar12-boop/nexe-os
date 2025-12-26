@@ -113,7 +113,7 @@ const Hero = () => {
             </AnimatedShinyText> */}
           </motion.div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-9xl font-normal tracking-tight font-heading mt-8">
+          <h1 className="text-4xl md:text-6xl lg:text-9xl font-medium tracking-tight font-heading mt-8">
             <Balancer>
               {"Management Agency".split(" ").map((word, index) => (
                 <motion.span

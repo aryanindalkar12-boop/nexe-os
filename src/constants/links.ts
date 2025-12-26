@@ -17,10 +17,10 @@ export const NAV_LINKS = [
         label: "Integrations",
         href: Routes.Integrations,
     },
-    {
-        label: "Membership",
-        href: Routes.Membership,
-    },
+    // {
+    //     label: "Membership",
+    //     href: Routes.Membership,
+    // },
 ] as const;
 
 export const footerLinks = {
