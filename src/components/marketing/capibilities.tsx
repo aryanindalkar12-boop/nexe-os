@@ -10,6 +10,7 @@ import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 import { cn } from '@/utils';
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { FeaturesSectionDemo } from './featuresec';
 
 const Capibilities = () => {
     return (
@@ -41,7 +42,7 @@ const Capibilities = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-12 max-w-5xl mx-auto">
+                {/* <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-12 max-w-5xl mx-auto">
                     <motion.div
                         className={cn(
                             "lg:col-span-7 relative group",
@@ -234,10 +235,11 @@ const Capibilities = () => {
                                         {stats[1]?.button?.text}
                                     </Button>
                                 </Link>
-                            </div>
+                            </div> 
                         </motion.div>
                     </motion.div>
-                </div>
+                </div>*/}
+                <FeaturesSectionDemo />
             </Wrapper>
         </section>
     );

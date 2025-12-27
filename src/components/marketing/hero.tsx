@@ -12,177 +12,177 @@ import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { ArrowRightIcon } from "lucide-react";
 
 const badges = [
-  { text: "Project Management", top: "15%", left: "5%" },
-  { text: "Client Hub", top: "25%", right: "8%" },
-  { text: "Smart Contracts", top: "60%", left: "10%" },
-  { text: "Invoice Tracking", top: "70%", right: "18%" },
+	{ text: "Project Management", top: "15%", left: "5%" },
+	{ text: "Client Hub", top: "25%", right: "8%" },
+	{ text: "Smart Contracts", top: "60%", left: "10%" },
+	{ text: "Invoice Tracking", top: "70%", right: "18%" },
 ];
 
 const FloatingBadge = ({
-  text,
-  top,
-  left,
-  right,
-  index,
+	text,
+	top,
+	left,
+	right,
+	index,
 }: {
-  text: string;
-  top: string;
-  left?: string;
-  right?: string;
-  index: number;
+	text: string;
+	top: string;
+	left?: string;
+	right?: string;
+	index: number;
 }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+	const x = useMotionValue(0);
+	const y = useMotionValue(0);
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        y: [0, -10, 0],
-      }}
-      transition={{
-        opacity: { delay: index * 0.2, duration: 0.5 },
-        scale: { delay: index * 0.2, duration: 0.5 },
-        y: {
-          duration: 3 + index,
-          repeat: Infinity,
-          ease: "easeInOut",
-        },
-      }}
-      style={{
-        x,
-        y,
-        top,
-        left,
-        right,
-      }}
-      className="absolute hidden lg:block z-30"
-    >
-      <div className="px-3 py-1 rounded-lg border border-foreground/5 backdrop-blur-md">
-        <span className="text-base font-handwriting text-foreground/80 whitespace-nowrap select-none">
-          {text}
-        </span>
-      </div>
-    </motion.div>
-  );
+	return (
+		<motion.div
+			initial={{ opacity: 0, scale: 0.8 }}
+			animate={{
+				opacity: 1,
+				scale: 1,
+				y: [0, -10, 0],
+			}}
+			transition={{
+				opacity: { delay: index * 0.2, duration: 0.5 },
+				scale: { delay: index * 0.2, duration: 0.5 },
+				y: {
+					duration: 3 + index,
+					repeat: Infinity,
+					ease: "easeInOut",
+				},
+			}}
+			style={{
+				x,
+				y,
+				top,
+				left,
+				right,
+			}}
+			className="absolute hidden lg:block z-30"
+		>
+			<div className="px-3 py-1 rounded-lg border border-foreground/5 backdrop-blur-md">
+				<span className="text-base font-handwriting text-foreground/80 whitespace-nowrap select-none">
+					{text}
+				</span>
+			</div>
+		</motion.div>
+	);
 };
 
 const Hero = () => {
-  const badge = "✨ Meet the Nexe OS";
-  const description =
-    "Nexe is the all-in-one management agency designed specifically for creators. The most trusted underdog in the creator economy.";
+	const badge = "Meet the Nexe OS";
+	const description =
+		"Nexe is the all-in-one management agency designed specifically for creators. The most trusted underdog in the creator economy.";
 
-  return (
-    <section className="relative w-full flex items-center justify-center pt-16 lg:pt-32 pb-4 overflow-hidden">
-      <Wrapper className="relative z-10">
-        <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={cn(
-              "flex items-center justify-center gap-2 pl-1.5 pr-2 py-1.5 rounded-full",
-              "badge-glow backdrop-blur-md"
-            )}
-          >
-            <span
-              className={cn(
-                "px-2 py-0.5 text-xs font-semibold rounded-full",
-                "bg-foreground text-background"
-              )}
-            >
-              New
-            </span>
-            <Container
-              words={true}
-              className="w-min flex text-sm text-foreground/80 "
-              >
-                <AnimatedShinyText>
-              {badge.split(" ").map((word, index) => (
-                  <span className="w-min" key={index}>
-                  {word}&nbsp;
-                </span>
-              ))}
-              </AnimatedShinyText>
-            </Container>
-            {/* <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+	return (
+		<section className="relative w-full flex items-start justify-start pt-16 lg:pt-32 pb-4 overflow-hidden px-4 sm:px-6">
+			<Wrapper className="relative z-10">
+				<div className="flex flex-col items-start text-left">
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+						className={cn(
+							"flex items-center justify-start gap-2 pl-1.5 pr-2 py-1.5 rounded-full",
+							"badge-glow backdrop-blur-md"
+						)}
+					>
+						<span
+							className={cn(
+								"px-2 py-0.5 text-xs font-semibold rounded-full",
+								"bg-foreground text-background"
+							)}
+						>
+							New
+						</span>
+						<Container
+							words={true}
+							className="w-auto flex text-sm text-foreground/80 "
+						>
+							<AnimatedShinyText>
+								{badge.split(" ").map((word, index) => (
+									<span className="w-min" key={index}>
+										{word}&nbsp;
+									</span>
+								))}
+							</AnimatedShinyText>
+						</Container>
+						{/* <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
               <span>✨ Introducing Magic UI</span>
               <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
             </AnimatedShinyText> */}
-          </motion.div>
+					</motion.div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-9xl font-medium tracking-tight font-heading mt-8">
-            <Balancer>
-              {"Management Agency".split(" ").map((word, index) => (
-                <motion.span
-                  initial={{ filter: "blur(10px)", opacity: 0, y: 10 }}
-                  animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  //   className="inline-block"
-                  key={index}
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-              <br />
-              {"for YouTube Creators".split(" ").map((word, index) => (
-                <motion.span
-                  initial={{ filter: "blur(10px)", opacity: 0, y: 10 }}
-                  animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: (4 + index) * 0.05 }}
-                  className={cn(
-                    // "inline-block",
-                    word === "Creators" &&
-                      "bg-linear-to-r from-primary via-[#00e271] to-primary bg-size-[200%_100%] animate-[shimmer_3s_ease-in-out_infinite] text-transparent bg-clip-text"
-                  )}
-                  key={index}
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-            </Balancer>
-          </h1>
+					<h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-tight font-heading mt-8 text-left w-full max-w-full">
+						<Balancer>
+							{"Management Agency".split(" ").map((word, index) => (
+								<motion.span
+									initial={{ filter: "blur(10px)", opacity: 0, y: 10 }}
+									animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+									transition={{ duration: 0.4, delay: index * 0.05 }}
+									className="inline-block md:inline"
+									key={index}
+								>
+									{word}&nbsp;
+								</motion.span>
+							))}
+							<br />
+							{"for YouTube Creators".split(" ").map((word, index) => (
+								<motion.span
+									initial={{ filter: "blur(10px)", opacity: 0, y: 10 }}
+									animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+									transition={{ duration: 0.4, delay: (4 + index) * 0.05 }}
+									className={cn(
+										"inline-block md:inline",
+										word === "Creators" &&
+											"bg-linear-to-r from-primary via-[#a6ff93] to-primary bg-size-[200%_100%] animate-[shimmer_3s_ease-in-out_infinite] text-transparent bg-clip-text font-serif italic"
+									)}
+									key={index}
+								>
+									{word}&nbsp;
+								</motion.span>
+							))}
+						</Balancer>
+					</h1>
 
-          <p className="text-base md:text-lg text-foreground/70 mt-6 max-w-2xl">
-            <Balancer>
-              {description.split(" ").map((word, index) => (
-                <motion.span
-                  initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
-                  animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.02 }}
-                  className="inline-block"
-                  key={index}
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-            </Balancer>
-          </p>
+					<p className="text-base md:text-lg text-foreground/70 mt-6 max-w-2xl">
+						<Balancer>
+							{description.split(" ").map((word, index) => (
+								<motion.span
+									initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
+									animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+									transition={{ duration: 0.3, delay: 0.3 + index * 0.02 }}
+									className="inline-block"
+									key={index}
+								>
+									{word}&nbsp;
+								</motion.span>
+							))}
+						</Balancer>
+					</p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className={cn(
-              "flex items-center gap-4 flex-wrap justify-center mt-8"
-            )}
-          >
-            <Link href={Routes.Dashboard}>
-              <Button size="lg" variant="ios">
-                Connect With Us
-              </Button>
-            </Link>
-            <Link href={Routes.Home}>
-              <Button size="lg" variant="outline">
-                Who are we ?
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.6 }}
+						className={cn(
+							"flex items-center gap-4 flex-wrap justify-start mt-8"
+						)}
+					>
+						<Link href={Routes.Dashboard}>
+							<Button size="lg" variant="ios">
+								Connect With Us
+							</Button>
+						</Link>
+						<Link href={Routes.Home}>
+							<Button size="lg" variant="outline">
+								Who are we ?
+							</Button>
+						</Link>
+					</motion.div>
+				</div>
 
-        {/* <motion.div
+				{/* <motion.div
                     initial={{ opacity: 0, filter: "blur(20px)", y: 30 }}
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -220,9 +220,9 @@ const Hero = () => {
                         />
                     ))}
                 </motion.div> */}
-      </Wrapper>
-    </section>
-  );
+			</Wrapper>
+		</section>
+	);
 };
 
 export default Hero;

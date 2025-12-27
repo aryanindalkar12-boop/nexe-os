@@ -1,3 +1,25 @@
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/PlayfairDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/PlayfairDisplay-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,7 +28,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-base: var(--font-base);
+  --font-base: var(--font-sans);
+  --font-serif: var(--font-serif);
   --font-heading: var(--font-heading);
   --font-handwriting: var(--font-handwriting);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -81,19 +104,31 @@
     }
   }
 
-  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite
-;
+  --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
   @keyframes orbit {
-  0% {
-    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));}
-  100% {
-    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));}}
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
   --animate-shiny-text: shiny-text 8s infinite;
   @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;}
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;}}}
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+}
 
 /* :root {
   --radius: 0.65rem;
@@ -146,7 +181,7 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: #87ea5c ;
+  --ring: #87ea5c;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -162,6 +197,7 @@
   --sidebar-ring: oklch(0.556 0 0);
   --radius: 0.625rem;
   --cardbox: #111112;
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -193,15 +229,6 @@ body {
   transition: color 50ms ease-in-out;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-heading;
-}
-
 .title {
   @apply text-3xl md:text-4xl font-medium bg-linear-to-r from-foreground to-foreground/70 text-transparent bg-clip-text text-balance text-center leading-tight;
 }
@@ -225,20 +252,22 @@ h6 {
 }
 
 .rotating-border::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -2px;
-  background: conic-gradient(from 0deg,
-      transparent 0%,
-      hsl(var(--primary)) 50%,
-      transparent 100%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    hsl(var(--primary)) 50%,
+    transparent 100%
+  );
   border-radius: inherit;
   animation: rotate-border 3s linear infinite;
   z-index: -1;
 }
 
 .rotating-border::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: hsl(var(--background) / 0.05);
@@ -270,8 +299,7 @@ h6 {
 .badge-glow {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow:
-    0 0 20px rgba(0, 85, 255, 0.05),
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
@@ -279,6 +307,10 @@ h6 {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif;
 }
 
 /* ---break---
@@ -290,5 +322,11 @@ h6 {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  :root {
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: "Playfair Display", serif;
   }
 }
